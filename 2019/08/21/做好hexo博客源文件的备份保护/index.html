@@ -130,7 +130,7 @@
 <meta property="og:description" content="使用Hexo编写博客感觉倍棒，尤其是它对公式以及代码的渲染，简直不要太爽。但是hexo博客的源文件都存在本地，如果天有不测风云——电脑中毒，或者磁盘损坏导致无法开机，那么博客上的文件怎么都无法拯救了，望眼欲穿、欲哭无泪。 又或者是从不同电脑端同时同步博客文章，怎么办呢。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/08/21/Al2bVLwN1HcysBK.jpg">
-<meta property="og:updated_time" content="2019-08-21T13:34:38.548Z">
+<meta property="og:updated_time" content="2019-08-21T13:41:32.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="做好hexo博客源文件的备份保护">
 <meta name="twitter:description" content="使用Hexo编写博客感觉倍棒，尤其是它对公式以及代码的渲染，简直不要太爽。但是hexo博客的源文件都存在本地，如果天有不测风云——电脑中毒，或者磁盘损坏导致无法开机，那么博客上的文件怎么都无法拯救了，望眼欲穿、欲哭无泪。 又或者是从不同电脑端同时同步博客文章，怎么办呢。">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-21T21:34:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-21T21:41:32+08:00">
                 2019-08-21
               </time>
             
@@ -454,10 +454,10 @@
 <p>备份到百度云盘/腾讯微云等。</p>
 </li>
 <li><p>方法三</p>
+<p>将源文件托管到github上，如果电脑损坏，或者更换电脑只需要执行几个命令源文件就找回来了，这种方法可能开头有些难，但是我个人觉得还是优于上面两种方法的。</p>
 </li>
 </ul>
-<p>将源文件托管到github上，如果电脑损坏，或者更换电脑只需要执行几个命令源文件就找回来了，这种方法可能开头有些难，但是我个人觉得还是优于上面两种方法的。</p>
-<h2 id="拖管博客源文件"><a href="#拖管博客源文件" class="headerlink" title="拖管博客源文件"></a>拖管博客源文件</h2><p>在<code>GitHub</code>上新建一个仓库，取名为<code>blog</code>(与本地的源文件夹名称一致)，这里可以设定仓库的形式：<code>public or private</code>。</p>
+<h2 id="拖管博客源文件"><a href="#拖管博客源文件" class="headerlink" title="拖管博客源文件"></a>拖管博客源文件</h2><p>​        在<code>GitHub</code>上新建一个仓库，取名为<code>blog</code>(与本地的源文件夹名称一致)，这里可以设定仓库的形式：<code>public or private</code>。</p>
 <ul>
 <li><p>进入本地<code>blog</code>文件夹，执行以下命令建立仓库：</p>
 </li>
@@ -469,26 +469,21 @@
 <li><p>修改<code>.gitignore</code>文件（如果没有请手动创建一个），在里面加入<code>*.log</code> 和 <code>public/</code> 以及<code>.deploy*/</code>。因为每次执行<code>hexo generate</code>命令时，上述目录都会被重写更新。因此忽略这两个目录下的文件更新，加快push速度。</p>
 </li>
 <li><p>执行命令以下命令，完成Hexo源码在本地的提交。</p>
-</li>
-</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;添加hexo源码文件作为备份&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>执行以下命令，将本地的仓库文件推送到Github。</li>
-</ul>
+</li>
+<li><p>执行以下命令，将本地的仓库文件推送到Github。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<ul>
+</li>
 <li><p>现在在任何一台电脑上，只需要<code>git clone git@github.com:smilexiamo/hexo.git</code>,即可完成将Hexo源文件复制到本地。（请将后面的<a href="mailto:`git@github.com" target="_blank" rel="noopener">`git@github.com</a>:smilexiamo/hexo.git`替换为自己相应的仓库地址。否则，克隆的将是博主的博客源码:)）</p>
 </li>
 <li><p>在本地编写完博客时，顺次执行以下命令，即可完成Hexo博客源文件的更新同步，保持Github上的hexo源码为最新版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">  git commit -m &quot;更新hexo源文件&quot;</span><br><span class="line">  git push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;更新hexo源文件&quot;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li>当远程仓库有更新时，执行以下命令，即可同步hexo源文件到本地。</li>
-</ul>
+<li><p>当远程仓库有更新时，执行以下命令，即可同步hexo源文件到本地。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
-<ul>
-<li>至此，Hexo源代码文件就完成了同步和更新了。</li>
+</li>
+<li><p>至此，Hexo源代码文件就完成了同步和更新了。</p>
+</li>
 </ul>
 
       
