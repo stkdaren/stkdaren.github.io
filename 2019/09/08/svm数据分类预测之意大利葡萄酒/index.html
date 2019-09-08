@@ -138,7 +138,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/08/4hXTxinjKNrypAb.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/08/rwf8kGIbX2Ezh1a.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/08/UIzPe8fRYyv9AsT.png">
-<meta property="og:updated_time" content="2019-09-08T11:23:33.311Z">
+<meta property="og:updated_time" content="2019-09-08T11:48:47.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="svm数据分类预测之意大利葡萄酒">
 <meta name="twitter:description" content="本次模拟实验数据来源于：UIC 数据链接:http://archive.ics.uci.edu/ml/datasets/Wine 主要参考资料：MATLAB神经网络43个案例分析  数据详情：wine数据记录了意大利同一地区3中不同品种的葡萄酒13中化学成分含量，数据共有178个样本，每个样本有13个属性。">
@@ -362,7 +362,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-08T19:23:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-08T19:48:47+08:00">
                 2019-09-08
               </time>
             
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  857
+                  966
                 </span>
               
 
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -492,13 +492,17 @@
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%加载数据</span></span><br><span class="line">clear all;clc</span><br><span class="line">load wine.c;</span><br><span class="line">classnumber = <span class="number">3</span>;</span><br><span class="line">wine_test = wine(:,<span class="number">2</span>:<span class="number">2</span>+<span class="number">12</span>) </span><br><span class="line">wine_labels = wine(:,<span class="number">1</span>) </span><br><span class="line"><span class="comment">%数据的可视化</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">boxplot(wine_test);</span><br><span class="line">title(<span class="string">'wine数据的box可视化图'</span>,<span class="string">'FontSize'</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">'属性值'</span>,<span class="string">'FontSize'</span>,<span class="number">12</span>);</span><br><span class="line">grid on;</span><br><span class="line"><span class="comment">% 画出测试数据的分维可视化图</span></span><br><span class="line"><span class="built_in">figure</span></span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">5</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line"><span class="keyword">for</span> run = <span class="number">1</span>:<span class="number">178</span></span><br><span class="line">    <span class="built_in">plot</span>(run,wine_labels(run),<span class="string">'*'</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">xlabel(<span class="string">'样本'</span>,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line">ylabel(<span class="string">'类别标签'</span>,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line">title(<span class="string">'class'</span>,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">for</span> run = <span class="number">2</span>:<span class="number">13</span></span><br><span class="line">    subplot(<span class="number">3</span>,<span class="number">5</span>,run);</span><br><span class="line">    <span class="built_in">hold</span> on;</span><br><span class="line">    str = [<span class="string">'attrib '</span>,num2str(run<span class="number">-1</span>)];</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="number">178</span></span><br><span class="line">        <span class="built_in">plot</span>(<span class="built_in">i</span>,wine_test(<span class="built_in">i</span>,run<span class="number">-1</span>),<span class="string">'*'</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    xlabel(<span class="string">'样本'</span>,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line">    ylabel(<span class="string">'属性值'</span>,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line">    title(str,<span class="string">'FontSize'</span>,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%数据的预处理，选定训练集与测试集</span></span><br><span class="line"><span class="comment">% 将第一类的1-30,第二类的60-95,第三类的131-153做为训练集</span></span><br><span class="line">train_wine = [wine_test(<span class="number">1</span>:<span class="number">30</span>,:);wine_test(<span class="number">60</span>:<span class="number">95</span>,:);wine_test(<span class="number">131</span>:<span class="number">153</span>,:)];</span><br><span class="line"><span class="comment">%提取相应的标签</span></span><br><span class="line">train_wine_labels = [wine_labels(<span class="number">1</span>:<span class="number">30</span>);wine_labels(<span class="number">60</span>:<span class="number">95</span>);wine_labels(<span class="number">131</span>:<span class="number">153</span>)];</span><br><span class="line"><span class="comment">%选定测试集</span></span><br><span class="line">test_wine = [wine_test(<span class="number">31</span>:<span class="number">59</span>,:);wine_test(<span class="number">96</span>:<span class="number">130</span>,:);wine_test(<span class="number">154</span>:<span class="number">178</span>,:)];</span><br><span class="line"><span class="comment">%提取相应标签</span></span><br><span class="line">test_wine_labels = [wine_labels(<span class="number">31</span>:<span class="number">59</span>);wine_labels(<span class="number">96</span>:<span class="number">130</span>);wine_labels(<span class="number">154</span>:<span class="number">178</span>)];</span><br><span class="line"><span class="comment">%将选定测试集与训练集进行归一化</span></span><br><span class="line">[mtrain,ntrain] = <span class="built_in">size</span>(train_wine);</span><br><span class="line">[mtest,ntest] = <span class="built_in">size</span>(test_wine);</span><br><span class="line">dataset = [train_wine,test_wine];</span><br><span class="line">[dataset_scale,ps] = mapminmax(dataset',<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">dataset_scale = dataset_scale';</span><br><span class="line">train_wine = dataset_scale(<span class="number">1</span>:mtrain,<span class="number">1</span>:ntrain);</span><br><span class="line">test_wine = dataset_scale(<span class="number">1</span>:mtrain,(ntrain+<span class="number">1</span>):(ntrain+ntest));</span><br><span class="line"><span class="comment">%SVM网络建立、训练和预测</span></span><br><span class="line">model = svmtrain(train_wine_labels, train_wine, <span class="string">'-c 2 -g 1'</span>);</span><br><span class="line">[predict_label, accuracy,dec_value1] = svmpredict(test_wine_labels, test_wine, model);</span><br></pre></td></tr></table></figure>
 <p>处理结果：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">*</span><br><span class="line">optimization finished, #iter = 58</span><br><span class="line">nu = <span class="number">0.174159</span></span><br><span class="line">obj = <span class="number">-12.164789</span>, rho = <span class="number">0.672743</span></span><br><span class="line">nSV = <span class="number">22</span>, nBSV = <span class="number">5</span></span><br><span class="line">*</span><br><span class="line">optimization finished, #iter = 51</span><br><span class="line">nu = <span class="number">0.060820</span></span><br><span class="line">obj = <span class="number">-3.223077</span>, rho = <span class="number">0.036566</span></span><br><span class="line">nSV = <span class="number">17</span>, nBSV = <span class="number">0</span></span><br><span class="line">*</span><br><span class="line">optimization finished, #iter = 52</span><br><span class="line">nu = <span class="number">0.179265</span></span><br><span class="line">obj = <span class="number">-13.202176</span>, rho = <span class="number">-0.220826</span></span><br><span class="line">nSV = <span class="number">25</span>, nBSV = <span class="number">6</span></span><br><span class="line">Total nSV = <span class="number">44</span></span><br><span class="line">Accuracy = <span class="number">96.6292</span><span class="comment">% (86/89) (classification)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% 结果分析</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 测试集的实际分类和预测分类图</span></span><br><span class="line"><span class="comment">% 通过图可以看出只有一个测试样本是被错分的</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(test_wine_labels,<span class="string">'o'</span>);</span><br><span class="line"><span class="built_in">plot</span>(predict_label,<span class="string">'r*'</span>);</span><br><span class="line">xlabel(<span class="string">'测试集样本'</span>,<span class="string">'FontSize'</span>,<span class="number">12</span>);</span><br><span class="line">ylabel(<span class="string">'类别标签'</span>,<span class="string">'FontSize'</span>,<span class="number">12</span>);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">'实际测试集分类'</span>,<span class="string">'预测测试集分类'</span>);</span><br><span class="line">title(<span class="string">'测试集的实际分类和预测分类图'</span>,<span class="string">'FontSize'</span>,<span class="number">12</span>);</span><br><span class="line">grid on;</span><br></pre></td></tr></table></figure>
 <p>最终分类结果显示：</p>
 <p><img src="https://i.loli.net/2019/09/08/8nT4MAiYJteuU52.png" alt="Snip20190908_5.png"></p>
 <p>从输出结果以及上图中可以看到，分类准确率可以达到96%，仅有3组被错误分类。</p>
+<h3 id="归一化的影响"><a href="#归一化的影响" class="headerlink" title="归一化的影响"></a>归一化的影响</h3><hr>
 <p>如果这里对训练集以及测试集的归一化选择在[-1,1]上，会是怎样的结果呢？</p>
 <p><img src="https://i.loli.net/2019/09/08/ye2hnRD3NzOpPSx.png" alt="Snip20190908_6.png"></p>
 <p>归一化区间在<code>[-1，1]</code>上，分类准确率为：<code>93%</code>，被错误分类的有6组。</p>
 <p>在不进行归一化时，一般情况下分类正确率超低，但是也并不是所有的问题都需要进行归一化处理，具体问题要具体看待。</p>
+<p>核函数的影响</p>
+<hr>
 <p>同样地，这里还可以验证采用不同核函数对分类准确率的影响。上述过程中定义的核函数为径向基核函数，即<code>-t 2</code>，接下来分别选择：<code>-t 0,-t 1,-t 3</code>来进一步观察那种核函数的分类准确率较高。</p>
 <p>采用<code>linear</code>核函数，即<code>-t 0</code>,分类准确率为95.506%,分类结果：</p>
 <p><img src="https://i.loli.net/2019/09/08/4hXTxinjKNrypAb.png" alt="Snip20190908_7.png"></p>
@@ -557,6 +561,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/09/08/知网论文PDF下载（学位论文）/" rel="prev" title="知网论文PDF下载（学位论文）与期刊查询">
+                知网论文PDF下载（学位论文）与期刊查询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -607,8 +615,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -625,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -636,7 +653,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -647,7 +664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -699,6 +716,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#归一化的影响"><span class="nav-number">1.</span> <span class="nav-text">归一化的影响</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -735,7 +768,7 @@
  
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站共 6.2k 字</span>
+  <span class="post-count">全站共 6.5k 字</span>
 </div>
 
 
