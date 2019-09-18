@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MATLAB,图像识别,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="所要识别的车牌照">
+<meta name="keywords" content="MATLAB,图像识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于MATLAB的车牌号识别系统（一）">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/基于MATLAB的车牌号识别系统（一）/index.html">
+<meta property="og:site_name" content="何大仁|机械之路">
+<meta property="og:description" content="所要识别的车牌照">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/JGSzeUC89ojp1uL.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/gNlEeGAmJkQDrdV.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/XHk6fuSvAdjVQ87.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/hSlaDIwiYLq1kXO.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/WqipyJEVAmMcY6D.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/Md41DBYRbTC9zaA.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/DWt5Mf4T9GxFbcS.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/aKYZhDq6cWBw4yP.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/18/IKP5npadBygwA8o.png">
+<meta property="og:updated_time" content="2019-09-18T13:11:06.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于MATLAB的车牌号识别系统（一）">
+<meta name="twitter:description" content="所要识别的车牌照">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/基于MATLAB的车牌号识别系统（一）/">
+
+
+
+
+
+
+
+  <title>基于MATLAB的车牌号识别系统（一） | 何大仁|机械之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何大仁|机械之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚持阅读，稳定输出！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/基于MATLAB的车牌号识别系统（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何大仁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/IMG_7695(20190629-201424).jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何大仁|机械之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于MATLAB的车牌号识别系统（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T20:43:44+08:00">
+                2019-09-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-18T21:11:06+08:00">
+                2019-09-18
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像识别/" itemprop="url" rel="index">
+                    <span itemprop="name">图像识别</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像识别/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  875
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg" alt="cp.jpg"></p>
+<p><center>所要识别的车牌照</center></p>
+<a id="more"></a>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">I = imread(<span class="string">'/Users/yons/Desktop/车牌号的识别/cp.jpg'</span>);   <span class="comment">%读取图片</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshow(I);</span><br><span class="line">title(<span class="string">'原始图像'</span>);</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line">im1 = rgb2gray(I);                            <span class="comment">%RGB转灰度直方图</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>),</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">imshow(im1); title(<span class="string">'灰度图像'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),</span><br><span class="line">imhist(im1); title(<span class="string">'灰度直方图'</span>);</span><br></pre></td></tr></table></figure>
+<p>显示读取图片：</p>
+<p><img src="https://i.loli.net/2019/09/18/JGSzeUC89ojp1uL.png" alt="Snip20190918_7.png"></p>
+<p>转化为灰度图像并显示灰度直方图：</p>
+<p><img src="https://i.loli.net/2019/09/18/gNlEeGAmJkQDrdV.png" alt="Snip20190918_8.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">im2 = imadjust(im1,[<span class="number">0.21</span>,<span class="number">0.85</span>],[<span class="number">0</span> <span class="number">1</span>])          <span class="comment">%图像增强</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">3</span>),</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">imshow(im2); title(<span class="string">'图像增强'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),</span><br><span class="line">imhist(im2); title(<span class="string">'图像增强后灰度直方图'</span>);</span><br></pre></td></tr></table></figure>
+<p>图像增强后的灰度直方图：</p>
+<p><img src="https://i.loli.net/2019/09/18/XHk6fuSvAdjVQ87.png" alt="Snip20190918_9.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">im3 = edge(im2,<span class="string">'sobel'</span>,<span class="number">0.15</span>,<span class="string">'both'</span>);           <span class="comment">%sobel算子实现图像边缘检测</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">4</span>);</span><br><span class="line">imshow(im3);title(<span class="string">'sobel边缘算子检测'</span>);</span><br></pre></td></tr></table></figure>
+<p>sobel算子实现图像边缘检测：</p>
+<p><img src="https://i.loli.net/2019/09/18/hSlaDIwiYLq1kXO.png" alt="Snip20190918_10.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">se1 = [<span class="number">1</span>;<span class="number">1</span>;<span class="number">1</span>];                                  <span class="comment">%形态学，对图像进行腐蚀操作</span></span><br><span class="line">im4 = imerode(im3,se1);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">5</span>);</span><br><span class="line">imshow(im4);title(<span class="string">'灰度图像腐蚀图像'</span>);</span><br></pre></td></tr></table></figure>
+<p>对图像进行形态学操作，腐蚀图像：</p>
+<p><img src="https://i.loli.net/2019/09/18/WqipyJEVAmMcY6D.png" alt="Snip20190918_11.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">se2 = strel(<span class="string">'rectangle'</span>,[<span class="number">25</span>,<span class="number">25</span>]);              <span class="comment">%闭运算平滑处理，建立连通区域，与开运算相反</span></span><br><span class="line">im5 = imclose(im4,se2);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">6</span>);</span><br><span class="line">imshow(im5);title(<span class="string">'闭运算平滑处理'</span>);</span><br></pre></td></tr></table></figure>
+<p>闭运算平滑处理，建立连通区域：</p>
+<p><img src="https://i.loli.net/2019/09/18/Md41DBYRbTC9zaA.png" alt="Snip20190918_12.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">im6 = bwareaopen(im5,<span class="number">2000</span>);                     <span class="comment">%移除小面积连通区域</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">7</span>);</span><br><span class="line">imshow(im6);title(<span class="string">'移除小面积连通区域'</span>);</span><br></pre></td></tr></table></figure>
+<p>移除小面积连通区域：</p>
+<p><img src="https://i.loli.net/2019/09/18/DWt5Mf4T9GxFbcS.png" alt="Snip20190918_13.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">[y,x,z] = <span class="built_in">size</span>(im6);                            <span class="comment">% y=210,x=627</span></span><br><span class="line">im7 = double(im6);                              <span class="comment">%精度类型转换</span></span><br><span class="line">Blue_y = <span class="built_in">zeros</span>(y,<span class="number">1</span>);                            <span class="comment">%建立零矩阵</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:y                                     </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:x</span><br><span class="line">        <span class="keyword">if</span>(im7(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">            Blue_y (<span class="built_in">i</span>,<span class="number">1</span>) = Blue_y(<span class="built_in">i</span>,<span class="number">1</span>)+<span class="number">1</span>;       <span class="comment">%根据im7确定y</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">[temp,MaxY] = <span class="built_in">max</span>(Blue_y);</span><br><span class="line">PY1 = MaxY;</span><br><span class="line"><span class="keyword">while</span>((Blue_y(PY1,<span class="number">1</span>) &gt;= <span class="number">5</span>) &amp;&amp; (PY1 &gt; <span class="number">1</span>))         <span class="comment">%裁剪图像</span></span><br><span class="line">    PY1 = PY1 - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">PY2 = MaxY;</span><br><span class="line"><span class="keyword">while</span>((Blue_y(PY2,<span class="number">1</span>) &gt;= <span class="number">5</span>) &amp;&amp; (PY2 &lt; y))         </span><br><span class="line">    PY2 = PY2 + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">IY = I(PY1:PY2,:,:);                             <span class="comment">%PY1=60,PY2=126,取出I矩阵第60到126行，全部矩阵</span></span><br><span class="line">Blue_x = <span class="built_in">zeros</span>(<span class="number">1</span>,x);    </span><br><span class="line"><span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:x</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = PY1:PY2</span><br><span class="line">        <span class="keyword">if</span>(im7(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line">            Blue_x (<span class="number">1</span>,<span class="built_in">j</span>) = Blue_x(<span class="number">1</span>,<span class="built_in">j</span>)+<span class="number">1</span>;        <span class="comment">%根据im7确定x</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">PX1 = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>((Blue_x(<span class="number">1</span>,PX1) &lt; <span class="number">3</span>) &amp;&amp; (PX1 &lt; x))         <span class="comment">%裁剪图像</span></span><br><span class="line">    PX1 = PX1 + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">PX2 = x;</span><br><span class="line"><span class="keyword">while</span>((Blue_x(<span class="number">1</span>,PX2) &lt; <span class="number">3</span>) &amp;&amp; (PX2 &gt; PX1))</span><br><span class="line">    PX2 = PX2 - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">end</span>                                             <span class="comment">%PX1=197,PX2=436</span></span><br><span class="line"></span><br><span class="line">PX1 = PX1 + <span class="number">6</span>;                  </span><br><span class="line">PX2 = PX2 - <span class="number">1</span>;</span><br><span class="line">dw = I(PY1 + <span class="number">5</span>:PY2 - <span class="number">6</span>,PX1:PX2,:);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">8</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">imshow(IY);title(<span class="string">'垂直方向合理区域'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">imshow(dw);title(<span class="string">'定位剪切后的彩色车牌'</span>);</span><br></pre></td></tr></table></figure>
+<p>寻找车牌照区域（定位），并进行裁定：</p>
+<p><img src="https://i.loli.net/2019/09/18/aKYZhDq6cWBw4yP.png" alt="Snip20190918_14.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%%</span></span><br><span class="line">im8 = rgb2gray(dw);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">9</span>);</span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">imshow(im8);title(<span class="string">'灰度图像'</span>);</span><br><span class="line">level = graythresh(im8);                        <span class="comment">%寻找灰度最佳阈值</span></span><br><span class="line">im9 = imbinarize(im8,level);</span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">imshow(im9);title(<span class="string">'二值化图像'</span>);</span><br><span class="line"></span><br><span class="line">H = fspecial(<span class="string">'disk'</span>,<span class="number">3</span>);                        <span class="comment">%生成半径为3的圆盘形均值滤波器对图像进行卷积运算</span></span><br><span class="line">im10 = imbinarize(<span class="built_in">round</span>(filter2(H,im9)));      <span class="comment">%进行二维图像滤波，然后将数值转化为0 or 1，然后进行二值化</span></span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">imshow(im10);title(<span class="string">'均值滤波后图像'</span>);</span><br><span class="line"></span><br><span class="line">se = <span class="built_in">eye</span>(<span class="number">2</span>);                                   <span class="comment">%形态学处理</span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(im10);</span><br><span class="line"><span class="keyword">if</span> bwarea(im10)/m/n &gt;= <span class="number">0.365</span>                   <span class="comment">%对于单像素点面积大于0.365的进行腐蚀</span></span><br><span class="line">    im10 = imerode(im10,se);</span><br><span class="line"><span class="keyword">elseif</span> bwarea(im10)/m/n &lt;= <span class="number">0.235</span></span><br><span class="line">    im10 = imdilate(im10,se);                  <span class="comment">%对于单像素点面积大于0.235的进行膨胀</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">subplot(<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">imshow(im10);title(<span class="string">'膨胀或腐蚀处理后的图像'</span>);</span><br></pre></td></tr></table></figure>
+<p>将裁剪后的车牌照图像转化为灰度图像，再转化为二值图像，对二值图像均值滤波，最后通过膨胀或腐蚀处理后得到一副较为整洁，便于识别的图像。</p>
+<p><img src="https://i.loli.net/2019/09/18/IKP5npadBygwA8o.png" alt="Snip20190918_15.png"></p>
+<p>接下来将通过调用.m文件（车牌照字母文字库文件）对最终得到的图像进行分割，然后逐一识别。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatIMG8 下午4.09.56.jpeg" alt="何大仁 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的个人微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+            <a href="/tags/图像识别/" rel="tag"># 图像识别</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/18/基于matlab和图像灰度值对X射线下煤矸分选研究/" rel="next" title="基于matlab和图像灰度值对X射线下煤矸分选研究">
+                <i class="fa fa-chevron-left"></i> 基于matlab和图像灰度值对X射线下煤矸分选研究
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/无用之用堪称大用/" rel="prev" title="无用之用堪称大用">
+                无用之用堪称大用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_7695(20190629-201424).jpg" alt="何大仁">
+            
+              <p class="site-author-name" itemprop="name">何大仁</p>
+              <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/stkdaren" target="_blank" title="仓库">
+                      
+                        <i class="fa fa-fw fa-github"></i>仓库</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tuchong.com/3362030/" target="_blank" title="图虫">
+                      
+                        <i class="fa fa-fw fa-skype"></i>图虫</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/403730649" target="_blank" title="哔哩">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://douban.com/people/152247019/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何大仁</span>
+
+  
+</div>
+
+
+  
+
+
+
+
+
+ 
+
+
+
+ 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 14.4k 字</span>
+</div>
+
+
+
+
+
+<br>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
