@@ -121,22 +121,19 @@
 
 
 
-<meta name="description" content="博客地址：www.stkdaren.top 主题使用next主题 访问量统计使用不蒜子">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo next博客的一系列设置（访问量、删除底部注释、公式、代码）">
 <meta property="og:url" content="http://yoursite.com/2019/08/21/hexo-next博客添加访问量统计/index.html">
 <meta property="og:site_name" content="何大仁|机械之路">
-<meta property="og:description" content="博客地址：www.stkdaren.top 主题使用next主题 访问量统计使用不蒜子">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/08/21/jIbFh1ezXvc9Sik.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/08/21/nRj2A1lthHFW97s.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/21/7Jha2IoYtMEX34s.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/21/nwLYp6DZJVbr4Fa.png">
-<meta property="og:updated_time" content="2019-08-21T11:37:12.636Z">
+<meta property="og:updated_time" content="2019-10-06T13:01:14.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo next博客的一系列设置（访问量、删除底部注释、公式、代码）">
-<meta name="twitter:description" content="博客地址：www.stkdaren.top 主题使用next主题 访问量统计使用不蒜子">
 <meta name="twitter:image" content="https://i.loli.net/2019/08/21/jIbFh1ezXvc9Sik.jpg">
 
 
@@ -317,7 +314,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何大仁">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/IMG_7695(20190629-201424).jpg">
+      <meta itemprop="image" content="/images/IMG_9158(20191004-194448).jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -357,8 +354,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-21T19:37:12+08:00">
-                2019-08-21
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-06T21:01:14+08:00">
+                2019-10-06
               </time>
             
           </span>
@@ -445,12 +442,12 @@
 
       
         <p><img src="https://i.loli.net/2019/08/21/jIbFh1ezXvc9Sik.jpg" alt="timg.jpeg"></p>
+<a id="more"></a>
 <ul>
 <li>博客地址：<code>www.stkdaren.top</code></li>
 <li>主题使用<code>next</code>主题</li>
 <li>访问量统计使用不蒜子</li>
 </ul>
-<a id="more"></a>
 <h2 id="配置是否开启不蒜子访问量统计"><a href="#配置是否开启不蒜子访问量统计" class="headerlink" title="配置是否开启不蒜子访问量统计"></a>配置是否开启不蒜子访问量统计</h2><p>   直接在<code>themes/next/layout/_partial/footer.swig</code>末尾添加如下代码：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不蒜子统计 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span></span><br><span class="line">                本站总访问量<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次</span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_uv"</span> <span class="attr">style</span>=<span class="string">'display:none'</span>&gt;</span></span><br><span class="line">                本站访客数<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>人</span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="删除原本自带的底部注释"><a href="#删除原本自带的底部注释" class="headerlink" title="删除原本自带的底部注释"></a>删除原本自带的底部注释</h2><p>在<code>themes/next/layout/_partial/footer.swig</code>文件里面找到如下框选的代码将其删除：</p>
@@ -619,7 +616,7 @@ x^{y+1}=4y\\</script><p><center>【测试公式】</center></p>
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/IMG_7695(20190629-201424).jpg" alt="何大仁">
+              <img class="site-author-image" itemprop="image" src="/images/IMG_9158(20191004-194448).jpg" alt="何大仁">
             
               <p class="site-author-name" itemprop="name">何大仁</p>
               <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>

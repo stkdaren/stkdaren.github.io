@@ -121,13 +121,11 @@
 
 
 
-<meta name="description" content="所要识别的车牌照">
 <meta name="keywords" content="MATLAB,图像识别">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于MATLAB的车牌号识别系统（一）">
 <meta property="og:url" content="http://yoursite.com/2019/09/18/基于MATLAB的车牌号识别系统（一）/index.html">
 <meta property="og:site_name" content="何大仁|机械之路">
-<meta property="og:description" content="所要识别的车牌照">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/09/18/JGSzeUC89ojp1uL.png">
@@ -139,10 +137,9 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/18/DWt5Mf4T9GxFbcS.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/18/aKYZhDq6cWBw4yP.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/18/IKP5npadBygwA8o.png">
-<meta property="og:updated_time" content="2019-09-20T07:40:48.620Z">
+<meta property="og:updated_time" content="2019-10-06T12:58:48.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于MATLAB的车牌号识别系统（一）">
-<meta name="twitter:description" content="所要识别的车牌照">
 <meta name="twitter:image" content="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg">
 
 
@@ -323,7 +320,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何大仁">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/IMG_7695(20190629-201424).jpg">
+      <meta itemprop="image" content="/images/IMG_9158(20191004-194448).jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -363,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-20T15:40:48+08:00">
-                2019-09-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-06T20:58:48+08:00">
+                2019-10-06
               </time>
             
           </span>
@@ -462,9 +459,8 @@
 
       
         <p><img src="https://i.loli.net/2019/09/18/487qlSFMcgeQw6J.jpg" alt="cp.jpg"></p>
-<p><center>所要识别的车牌照</center></p>
 <a id="more"></a>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">I = imread(<span class="string">'/Users/yons/Desktop/车牌号的识别/cp.jpg'</span>);   <span class="comment">%读取图片</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshow(I);</span><br><span class="line">title(<span class="string">'原始图像'</span>);</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line">im1 = rgb2gray(I);                            <span class="comment">%RGB转灰度直方图</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>),</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">imshow(im1); title(<span class="string">'灰度图像'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),</span><br><span class="line">imhist(im1); title(<span class="string">'灰度直方图'</span>);</span><br></pre></td></tr></table></figure>
+<p><center>所要识别的车牌照<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">I = imread(<span class="string">'/Users/yons/Desktop/车牌号的识别/cp.jpg'</span>);   <span class="comment">%读取图片</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">imshow(I);</span><br><span class="line">title(<span class="string">'原始图像'</span>);</span><br><span class="line"><span class="comment">%%</span></span><br><span class="line">im1 = rgb2gray(I);                            <span class="comment">%RGB转灰度直方图</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>),</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">imshow(im1); title(<span class="string">'灰度图像'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),</span><br><span class="line">imhist(im1); title(<span class="string">'灰度直方图'</span>);</span><br></pre></td></tr></table></figure></center></p>
 <p>显示读取图片：</p>
 <p><img src="https://i.loli.net/2019/09/18/JGSzeUC89ojp1uL.png" alt="Snip20190918_7.png"></p>
 <p>转化为灰度图像并显示灰度直方图：</p>
@@ -600,7 +596,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/IMG_7695(20190629-201424).jpg" alt="何大仁">
+              <img class="site-author-image" itemprop="image" src="/images/IMG_9158(20191004-194448).jpg" alt="何大仁">
             
               <p class="site-author-name" itemprop="name">何大仁</p>
               <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>
