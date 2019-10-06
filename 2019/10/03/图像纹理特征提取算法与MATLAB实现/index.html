@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MATLAB,图像处理,纹理特征,灰度共生矩阵,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="MATLAB,图像处理,纹理特征,灰度共生矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像纹理特征提取算法与MATLAB实现">
+<meta property="og:url" content="http://yoursite.com/2019/10/03/图像纹理特征提取算法与MATLAB实现/index.html">
+<meta property="og:site_name" content="何大仁|机械之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/10/03/pIJ1EZD98XuysBT.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/10/04/qgLnNC65KYESrhO.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/04/xbTcKthmI9Zo6a2.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/04/GJ4A1vdME2t5kCj.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/04/mVXhyAGq5H2UbKZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/04/Nmt8dpl2Gq3haw4.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/es5bxFySJk29Ztr.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/FTN4GqOi2Ad3xJB.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/QYyVt8HJdlL2USx.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/marwt5hyuUSieNn.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/FarHxo1WDZE7gAI.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/gUT9bDpSO2Get1i.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/2jfk1pcw7mysgFZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/JOrlnRdawfet2gq.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/BFXRLwhm6JMvolK.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/1OBGyVRTtalC9kf.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/ycVeZQtEWmag2qA.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/9kOKNz13d2PhbRJ.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/nKkGNg2hiRTBj6a.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/7omRJt4Q59ISwaC.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/dqhblmPcikIS91A.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/c4VYQS3MJObCzF8.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/06/xTY5eczfCgntXZE.png">
+<meta property="og:updated_time" content="2019-10-06T11:03:06.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像纹理特征提取算法与MATLAB实现">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/03/pIJ1EZD98XuysBT.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/03/图像纹理特征提取算法与MATLAB实现/">
+
+
+
+
+
+
+
+  <title>图像纹理特征提取算法与MATLAB实现 | 何大仁|机械之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何大仁|机械之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚持阅读，稳定输出！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/图像纹理特征提取算法与MATLAB实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何大仁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/IMG_7695(20190629-201424).jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何大仁|机械之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图像纹理特征提取算法与MATLAB实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-03T19:12:30+08:00">
+                2019-10-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-06T19:03:06+08:00">
+                2019-10-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像处理/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像处理/MATLAB/算法研究/" itemprop="url" rel="index">
+                    <span itemprop="name">算法研究</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/10/03/pIJ1EZD98XuysBT.jpg" alt="timg.jpeg"></p>
+<a id="more"></a>
+<h3 id="1主要内容概述"><a href="#1主要内容概述" class="headerlink" title=".1主要内容概述"></a>.1主要内容概述</h3><p>图像特征的提取是图像识别和分类，以及基于内容检索、图像数据挖掘等研究的基础操作，其中图像纹理特征对描述图像具有重要意义，纹理特征提取是目前图像处理领域研究的一个热点。这里主要探讨基于灰度共生矩阵<code>（GLCM）</code>的原理和纹理特征提取方法，并且在matlab中实现图像纹理特征提取输出等操作。</p>
+<h4 id="1-1灰度共生矩阵概念"><a href="#1-1灰度共生矩阵概念" class="headerlink" title=".1.1灰度共生矩阵概念"></a>.1.1灰度共生矩阵概念</h4><p>灰度共生矩阵<code>(Gray-level Co-occurrence Matrix，GLCM）</code>,又被称为灰度共现矩阵。由于纹理是由灰度分布在空间位置上反复出现而形成的，所以在图像空间中相隔一定距离的两像素之间会存在一定的灰度关系，即图像中灰度的空间相关特性。灰度共生矩阵是一种通过研究灰度空间相关特性来描述纹理的常用方法。</p>
+<p><code>GLCM</code>是一个<code>L*L</code>方阵，<code>L</code>为源图像的灰度级，像素灰度在空间位置上的反复出现形成图像纹理，<code>GLCM</code>是描述具有某种空间位置关系两个像素灰度的联合分布。</p>
+<p>如果图像是由具有相似灰度值的像素块构成，那么灰度共生矩阵的对角元素会有比较大的值，如果图像像素在局部有变化，那么偏离对角线的元素会有比较大值。灰度直方图是对图像上单个像素具有某个灰度级进行统计的结果，而灰度共生矩阵是对图像上保持某个距离的两个像素分别具有某灰度的状况进行统计得到的。</p>
+<h4 id="1-2特征参数"><a href="#1-2特征参数" class="headerlink" title=".1.2特征参数"></a>.1.2特征参数</h4><p>灰度共生矩阵的特征参数：灰度共生矩阵反映的是图像灰度关于方向、相邻间隔、变化幅度的综合信息。通过灰度共生矩阵可以分析图像的局部模式和排列规则等，为了能够直观的以灰度共生矩阵描述纹理情况，一般不直接应用得到的灰度共生矩阵，而是在灰度共生矩阵的基础上获取二次统计量。</p>
+<p>为了分析方便，先对灰度共生矩阵进行归一化，将矩阵中每一个元素除以各元素之和，得到各元素都小于一的归一化共生矩阵。先前研究者<code>Haralick</code>等人定义有14个特征参量，<code>Ulaby</code>等人在这14个特征参数中发现只有4个特征参数是不相关的（对比度、逆差矩, 相关性、能量），应用这4个特征参量即便于计算又能给出较高的分类精度，一般采用下面四个最常用的特征来提取图像的纹理特征。</p>
+<h5 id="角二阶矩（能量angular-second-moment）"><a href="#角二阶矩（能量angular-second-moment）" class="headerlink" title="角二阶矩（能量angular second moment）"></a>角二阶矩（能量<code>angular second moment</code>）</h5><p>灰度共生矩阵元素值的平方和，因此称之为能量。反应了图像灰度分布均匀程度和纹理粗细度。如果共生矩阵的所有值均相等，则<code>ASM</code>值小；相反，如果其中一些值大而其它值小，则<code>ASM</code>值大。当共生矩阵中元素集中分布时，此时<code>ASM</code>值大。<code>ASM</code>值越大表明一种较均匀和规则变化的纹理模式。</p>
+<p><img src="https://i.loli.net/2019/10/04/qgLnNC65KYESrhO.png" alt="Snip20191004_8.png"></p>
+<h5 id="对比度（惯性矩）"><a href="#对比度（惯性矩）" class="headerlink" title="对比度（惯性矩）"></a>对比度（惯性矩）</h5><p>反映了图像的清晰度和纹理沟纹深浅的程度。纹理的沟纹深, 其对比度大, 效果清晰;反之, 对比度小, 则沟纹浅, 效果模糊。灰度差即对比度大的像素对越多, 这个值越大。灰度共生矩阵中远离对角线的元素值越大, 对比度越大。</p>
+<p><img src="https://i.loli.net/2019/10/04/xbTcKthmI9Zo6a2.png" alt="Snip20191004_5.png"></p>
+<h5 id="相关度（inverse-different-moment）"><a href="#相关度（inverse-different-moment）" class="headerlink" title="相关度（inverse different moment）"></a>相关度（<code>inverse different moment</code>）</h5><p>相关度用来衡量灰度共生矩阵的元素在行或者列方向上的相似程度，当矩阵元素值均匀相等时，相关值就大；相反，如果矩阵像素值相差很大则相关值很小。如果图像中有水平方向纹理则水平方向矩阵的相关值大于其余矩阵的相关值。</p>
+<p><img src="https://i.loli.net/2019/10/04/GJ4A1vdME2t5kCj.png" alt="Snip20191004_6.png"></p>
+<p>其中：</p>
+<p><img src="https://i.loli.net/2019/10/04/mVXhyAGq5H2UbKZ.png" alt="Snip20191004_7.png"></p>
+<h5 id="熵-entropy"><a href="#熵-entropy" class="headerlink" title="熵(entropy)"></a>熵(<code>entropy</code>)</h5><p>熵是图像具有信息量的度量，纹理信息也属于图像的信息，是一个随机性的度量，当灰度共生矩阵中所有元素有最大的随机性、灰度共生矩阵中所有值几乎相等时，共生矩阵中元素分散分布时，熵较大。</p>
+<p><img src="https://i.loli.net/2019/10/04/Nmt8dpl2Gq3haw4.png" alt="Snip20191004_9.png"></p>
+<p>它表示图像中纹理的非均匀程度或复杂程度。若图像没有任何纹理，则灰度共生矩阵几乎为零阵。它反映图像中纹理的复杂程度或非均匀度。若纹理复杂，熵值大；反之，若图像中灰度均匀，共生矩阵中元素大小差异大，熵值小。</p>
+<h3 id="2程序设计1"><a href="#2程序设计1" class="headerlink" title=".2程序设计1"></a>.2程序设计1</h3><p>在<code>MATLAB</code>中使用<code>graycomatrix()</code>函数创建灰度共生矩阵，具体调用形式如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLCM = graycomatrix(gray, <span class="string">'GrayLimits'</span>,[],<span class="string">'offset'</span>, [<span class="number">0</span> <span class="number">1</span>],<span class="string">'NumLevels'</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong><br><code>&#39;GrayLimits&#39;：</code>灰度界限，为二元向量<code>[low high]</code>。灰度值小于等于<code>low</code>时对应<code>1</code>，大于等于<code>high</code>时对应于灰度级。如果参数设为<code>[]</code>，则共生矩阵使用图像的最小和最大灰度值作为界限，即<code>[min(I(:)) max(I(:))]</code>。</p>
+<p><code>&#39;NumLevels&#39;</code>：整数，说明<code>I</code>中进行灰度缩放的灰度级数目。例如，如果<code>NumLevel</code>设为<code>8</code>，则共生矩阵缩放I中的灰度值使它们为<code>1</code>到<code>8</code>之间的整数。灰度级的数目决定了共生矩阵<code>glcm</code>的尺寸。缺省情况：数字图像：<code>8</code>；二进制图像：<code>2</code>。</p>
+<p><code>&#39;Offset&#39;：</code> <code>p</code>行<code>2</code>列整型矩阵，说明感兴趣像素与其相邻像素之间的距离。每行是一个说明像素对之间偏移关系的二元向量<code>[row_offset, col_offset]</code>。行偏移<code>row_offset</code>是感兴趣像素和其相邻像素之间的间隔行数。列偏移同理。偏移常表达为一个角度，常用的角度如下：（其中<code>D</code>为像素距离）</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">角度      <span class="number">0</span>           <span class="number">45</span>         <span class="number">90</span>          <span class="number">135</span></span><br><span class="line">Offset   [<span class="number">0</span>,D]     [-D D]    [-D <span class="number">0</span>]     [-D -D]</span><br></pre></td></tr></table></figure>
+<p><code>[glcms,SI] = graycomatrix(...)</code><br> 返回缩放图像<code>SI</code>，<code>SI</code>是用来计算灰度共生矩阵的。<code>SI</code>中的元素值介于<code>1</code>和灰度级数目之间。<code>graycoprops</code>：得到灰度共生矩阵得到各种属性。</p>
+<p><code>stats = graycoprops(glcm, properties)</code>：从灰度共生矩阵<code>glcm</code>计算静态属性。<code>glcm</code>是<code>m*n*p</code>的有效灰度共生矩阵。如果<code>glcm</code>是一个灰度共生矩阵的矩阵，则<code>stats</code>是包括每个灰度共生矩阵静态属性的矩阵。</p>
+<p><code>graycoprops</code>正规化了灰度共生矩阵，因此元素之和为<code>1</code>。正规化的<code>GLCM</code>中的元素<code>（r，c）</code>是具有灰度级<code>r</code>和<code>c</code>的定义的空间关系的像素对的联合概率。<code>Graycoprops</code>使用正规化的<code>GLCM</code>来计算属性。</p>
+<p><strong>属性参数如下：</strong></p>
+<ol>
+<li><code>&#39;Contrast&#39; :</code> 对比度。返回整幅图像中像素和它相邻像素之间的亮度反差。取值范围：<code>[0,（GLCM行数-1）^2]</code>。灰度一致的图像，对比度为<code>0</code>。</li>
+<li><code>&#39;Correlation&#39; :</code>相关。返回整幅图像中像素与其相邻像素是如何相关的度量值。取值范围：<code>[-1,1]</code>。灰度一致的图像，相关性为<code>NaN</code>。</li>
+<li><code>&#39;Energy&#39; :</code> 能量。返回<code>GLCM</code>中元素的平方和。取值范围：<code>[0 1]</code>。灰度一致的图像能量为<code>1</code>。</li>
+<li><code>&#39;Homogemeity&#39; :</code>同质性。返回度量<code>GLCM</code>中元素的分布到对角线紧密程度。取值范围：<code>[0 1]</code>。对角矩阵的同质性为<code>1</code>。</li>
+</ol>
+<p>例如，计算<code>matlab</code>自带图像的纹理特征参数值：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">clear all,clc;</span><br><span class="line">gray = imread(<span class="string">'circuit.tif'</span>);</span><br><span class="line">offsets = [<span class="number">0</span> <span class="number">1</span>;<span class="number">-1</span> <span class="number">1</span>;<span class="number">-1</span> <span class="number">0</span>;<span class="number">-1</span> <span class="number">-1</span>];</span><br><span class="line">[glcm,SI] = graycomatrix(gray,<span class="string">'GrayLimits'</span>,[],<span class="string">'NumLevels'</span>,<span class="number">8</span>,<span class="string">'Of'</span>,offsets);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>),imshow(gray),title(<span class="string">'灰度级压缩前'</span>);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>),imhist(gray),title(<span class="string">'灰度直方图'</span>);</span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 查看灰度级压缩之后的图像</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>),imshow(SI,[<span class="number">0</span> <span class="number">7</span>]),title(<span class="string">'灰度级压缩后'</span>);</span><br><span class="line"><span class="comment">%使用imshow()显示不同灰度级时，要使用imshow(I,[low,high])格式，否则无法正确显示图片内容。</span></span><br><span class="line"><span class="comment">%对于uint8类型图像默认显示范围取【0,255】，对于double类型图像默认显示范围【0,1】</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 求出四个方向上的灰度共生矩阵特征参量</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">stats = graycoprops(glcm,&#123;<span class="string">'contrast'</span>,<span class="string">'homogeneity'</span>,<span class="string">'Energy'</span>,<span class="string">'Correlation'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>返回结果：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stats = </span><br><span class="line"></span><br><span class="line">  包含以下字段的 struct:</span><br><span class="line"></span><br><span class="line">       Contrast: [<span class="number">0.2620</span> <span class="number">0.4162</span> <span class="number">0.2559</span> <span class="number">0.4218</span>]</span><br><span class="line">    Correlation: [<span class="number">0.9699</span> <span class="number">0.9522</span> <span class="number">0.9706</span> <span class="number">0.9515</span>]</span><br><span class="line">         Energy: [<span class="number">0.1086</span> <span class="number">0.0896</span> <span class="number">0.1072</span> <span class="number">0.0892</span>]</span><br><span class="line">    Homogeneity: [<span class="number">0.8848</span> <span class="number">0.8218</span> <span class="number">0.8838</span> <span class="number">0.8210</span>]</span><br></pre></td></tr></table></figure>
+<p>查看灰度级压缩前后对比图片：</p>
+<p><img src="https://i.loli.net/2019/10/06/es5bxFySJk29Ztr.png" alt="Snip20191006_25.png"></p>
+<p>使用<code>matlab</code>封装后的函数程序进行计算纹理特征参数值方便简单，能够很大程度上节省时间，解算算法泛化性强，不仅能够对一般图像纹理计算，处理一些较短的数字矩阵仍然能够得到正确的结果。</p>
+<h3 id="3程序设计2"><a href="#3程序设计2" class="headerlink" title=".3程序设计2"></a>.3程序设计2</h3><p>在使用<code>matlab</code>封装后的函数程序进行计算纹理特征参数值时，通常也是一知半解的状态，那么如何将封装的函数重新打开，了解它隐藏的原理、秘密，深入的去了解图像处理的知识呢。</p>
+<p>简短的几行代码中实际包含有<strong>图像灰度级压缩</strong>、<strong>灰度矩阵求解算法</strong>、<strong>纹理特征参量求解算法</strong>。程序源码计算思路如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">clear all,clc;</span><br><span class="line">gray = imread(<span class="string">'tree.jpg'</span>);</span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 将各颜色分量转化为灰度</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">gray = rgb2gray(gray);</span><br><span class="line"><span class="comment">%gray = double(0.2989*Image(:,:,1)+0.5870*Image(:,:,2)+0.1140*Image(:,:,3));</span></span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>),imshow(gray);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>),imhist(gray);</span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 灰度级压缩到16级</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">[M,N] = <span class="built_in">size</span>(gray);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:M</span><br><span class="line">	    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:N</span><br><span class="line">        		<span class="keyword">for</span> n = <span class="number">1</span>:<span class="number">256</span>/<span class="number">16</span></span><br><span class="line">            			<span class="keyword">if</span> (n<span class="number">-1</span>)*<span class="number">16</span>&lt;=gray(<span class="built_in">i</span>,<span class="built_in">j</span>)&amp;&amp;gray(<span class="built_in">i</span>,<span class="built_in">j</span>)&lt;=(n<span class="number">-1</span>)*<span class="number">16</span>+<span class="number">15</span></span><br><span class="line">				                gray(<span class="built_in">i</span>,<span class="built_in">j</span>) = n<span class="number">-1</span>;</span><br><span class="line">			            <span class="keyword">end</span></span><br><span class="line">		        <span class="keyword">end</span></span><br><span class="line">    	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 计算0，45，90，135方向上灰度共生矩阵，距离为1</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">Q = <span class="built_in">zeros</span>(<span class="number">16</span>,<span class="number">16</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">16</span></span><br><span class="line">						    <span class="keyword">for</span> n = <span class="number">1</span>:<span class="number">16</span></span><br><span class="line">		        <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:M</span><br><span class="line">			            <span class="keyword">for</span> <span class="built_in">j</span>= <span class="number">1</span>:N</span><br><span class="line">				                <span class="keyword">if</span> <span class="built_in">j</span> &lt; N &amp;&amp; gray(<span class="built_in">i</span>,<span class="built_in">j</span>) == m - <span class="number">1</span> &amp;&amp; gray(<span class="built_in">i</span>,<span class="built_in">j</span>+<span class="number">1</span>) == n - <span class="number">1</span></span><br><span class="line">					                    Q(m,n,<span class="number">1</span>) = Q(m,n,<span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">					                    Q(m,n,<span class="number">1</span>) = Q(m,n,<span class="number">1</span>);</span><br><span class="line">				                <span class="keyword">end</span></span><br><span class="line">                				<span class="keyword">if</span> <span class="built_in">i</span> &gt; <span class="number">1</span> &amp;&amp; <span class="built_in">j</span> &lt; N &amp;&amp; gray(<span class="built_in">i</span>,<span class="built_in">j</span>) == m - <span class="number">1</span> &amp;&amp; gray(<span class="built_in">i</span><span class="number">-1</span>,<span class="built_in">j</span>+<span class="number">1</span>) == n - <span class="number">1</span></span><br><span class="line">					                    Q(m,n,<span class="number">2</span>) = Q(m,n,<span class="number">2</span>) + <span class="number">1</span>;</span><br><span class="line">					                    Q(m,n,<span class="number">2</span>) = Q(m,n,<span class="number">2</span>);</span><br><span class="line">                				<span class="keyword">end</span></span><br><span class="line">				                <span class="keyword">if</span> <span class="built_in">i</span> &lt; M &amp;&amp; gray(<span class="built_in">i</span>,<span class="built_in">j</span>) == m - <span class="number">1</span> &amp;&amp; gray(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) == n - <span class="number">1</span></span><br><span class="line">					                    Q(m,n,<span class="number">3</span>) = Q(m,n,<span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">					                    Q(m,n,<span class="number">3</span>) = Q(m,n,<span class="number">3</span>);</span><br><span class="line">                				<span class="keyword">end</span></span><br><span class="line">				                <span class="keyword">if</span> <span class="built_in">i</span> &lt; M &amp;&amp; <span class="built_in">j</span> &lt; N &amp;&amp; gray(<span class="built_in">i</span>,<span class="built_in">j</span>) == m - <span class="number">1</span> &amp;&amp; gray(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>+<span class="number">1</span>) == n - <span class="number">1</span></span><br><span class="line">                    					Q(m,n,<span class="number">4</span>) = Q(m,n,<span class="number">4</span>) + <span class="number">1</span>;</span><br><span class="line">					                    Q(m,n,<span class="number">4</span>) = Q(m,n,<span class="number">4</span>);</span><br><span class="line">				                <span class="keyword">end</span></span><br><span class="line">			            <span class="keyword">end</span></span><br><span class="line">        		<span class="keyword">end</span></span><br><span class="line">		        <span class="keyword">if</span> m == n</span><br><span class="line">		        Q(m,n,:) = Q(m,n,:)*<span class="number">2</span>;</span><br><span class="line">	        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'0度时的灰度共生矩阵：'</span>)</span><br><span class="line"><span class="built_in">disp</span>(Q(:,:,<span class="number">1</span>));</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'45度时的灰度共生矩阵：'</span>)</span><br><span class="line"><span class="built_in">disp</span>(Q(:,:,<span class="number">2</span>));</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'90度时的灰度共生矩阵：'</span>)</span><br><span class="line"><span class="built_in">disp</span>(Q(:,:,<span class="number">3</span>));</span><br><span class="line"><span class="built_in">disp</span>(<span class="string">'135度时的灰度共生矩阵：'</span>)</span><br><span class="line"><span class="built_in">disp</span>(Q(:,:,<span class="number">4</span>));</span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">% 灰度共生矩阵归一化处理</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:<span class="number">4</span></span><br><span class="line">	Q(:,:,n) = Q(:,:,n)/sum(sum(Q(:,:,n)))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">[kk,ll,mm] = <span class="built_in">size</span>(Q);</span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line"><span class="comment">%对共生矩阵计算能量、熵、惯性矩、相关4个纹理参数</span></span><br><span class="line"><span class="comment">%-----------------------------------------------------------</span></span><br><span class="line">H = <span class="built_in">zeros</span>(<span class="number">1</span>,mm);</span><br><span class="line">I = H;</span><br><span class="line">Ux = H;      </span><br><span class="line">Uy = H;</span><br><span class="line">deltaX= H;  </span><br><span class="line">deltaY = H;</span><br><span class="line">C = H;</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:mm</span><br><span class="line">    E(n) = sum(sum(Q(:,:,n).^<span class="number">2</span>)); <span class="comment">%能量</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:kk</span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:ll</span><br><span class="line">            <span class="keyword">if</span> Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)~=<span class="number">0</span></span><br><span class="line">                H(n) = -Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)*<span class="built_in">log</span>(Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n))+H(n); <span class="comment">%熵</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            I(n) = (<span class="built_in">i</span>-<span class="built_in">j</span>)^<span class="number">2</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+I(n);  <span class="comment">%惯性矩</span></span><br><span class="line"></span><br><span class="line">            Ux(n) = <span class="built_in">i</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+Ux(n); <span class="comment">%相关性中μx</span></span><br><span class="line">            Uy(n) = <span class="built_in">j</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+Uy(n); <span class="comment">%相关性中μy</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:mm</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:kk</span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:ll</span><br><span class="line">            deltaX(n) = (<span class="built_in">i</span>-Ux(n))^<span class="number">2</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+deltaX(n); <span class="comment">%相关性中σx</span></span><br><span class="line">            deltaY(n) = (<span class="built_in">j</span>-Uy(n))^<span class="number">2</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+deltaY(n); <span class="comment">%相关性中σy</span></span><br><span class="line">            C(n) = <span class="built_in">i</span>*<span class="built_in">j</span>*Q(<span class="built_in">i</span>,<span class="built_in">j</span>,n)+C(n);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    C(n) = (C(n)-Ux(n)*Uy(n))/deltaX(n)/deltaY(n); <span class="comment">%相关性</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%--------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">%求能量、熵、惯性矩、相关的均值和标准差作为最终8维纹理特征</span></span><br><span class="line"><span class="comment">%--------------------------------------------------------------------------</span></span><br><span class="line">a1 = <span class="built_in">mean</span>(E);</span><br><span class="line">b1 = <span class="built_in">sqrt</span>(cov(E));</span><br><span class="line">a2 = <span class="built_in">mean</span>(H);</span><br><span class="line">b2 = <span class="built_in">sqrt</span>(cov(H));</span><br><span class="line">a3 = <span class="built_in">mean</span>(I);</span><br><span class="line">b3 = <span class="built_in">sqrt</span>(cov(I));</span><br><span class="line">a4 = <span class="built_in">mean</span>(C);</span><br><span class="line">b4 = <span class="built_in">sqrt</span>(cov(C));</span><br><span class="line">sprintf(<span class="string">'0,45,90,135方向上的能量依次为： %f, %f, %f, %f'</span>,E(<span class="number">1</span>),E(<span class="number">2</span>),E(<span class="number">3</span>),E(<span class="number">4</span>))  <span class="comment">% 输出数据;</span></span><br><span class="line">sprintf(<span class="string">'0,45,90,135方向上的熵依次为： %f, %f, %f, %f'</span>,H(<span class="number">1</span>),H(<span class="number">2</span>),H(<span class="number">3</span>),H(<span class="number">4</span>))  <span class="comment">% 输出数据;</span></span><br><span class="line">sprintf(<span class="string">'0,45,90,135方向上的惯性矩依次为： %f, %f, %f, %f'</span>,I(<span class="number">1</span>),I(<span class="number">2</span>),I(<span class="number">3</span>),I(<span class="number">4</span>))  <span class="comment">% 输出数据;</span></span><br><span class="line">sprintf(<span class="string">'0,45,90,135方向上的相关性依次为： %f, %f, %f, %f'</span>,C(<span class="number">1</span>),C(<span class="number">2</span>),C(<span class="number">3</span>),C(<span class="number">4</span>))  <span class="comment">% 输出数据;</span></span><br></pre></td></tr></table></figure>
+<p>当运行如上程序计算同一张图像的纹理特征参数时，会得到不同于matlab封装函数计算得到的值，这里主要原因是两种算法里面灰度级压缩算法不同，直接导致求得灰度共生矩阵不同，所以基于灰度共生矩阵得到的纹理参数也就不同了。但是结果虽然不同，其反应的图像纹理特点仍旧是相同的。</p>
+<h3 id="4实验测试"><a href="#4实验测试" class="headerlink" title=".4实验测试"></a>.4实验测试</h3><h4 id="4-1图像准备及程序解算"><a href="#4-1图像准备及程序解算" class="headerlink" title=".4.1图像准备及程序解算"></a>.4.1图像准备及程序解算</h4><p>例如使用程序2计算四副图像的纹理特征参量，查看其特征参量能否解释图像的纹理变化分布。</p>
+<p><img src="https://i.loli.net/2019/10/06/FTN4GqOi2Ad3xJB.jpg" alt="tree.jpg"></p>
+<p><center>树干图像（tree）</center></p>
+<p><img src="https://i.loli.net/2019/10/06/QYyVt8HJdlL2USx.png" alt="sky.png"></p>
+<p><center>天空图像(sky)</center></p>
+<p><img src="https://i.loli.net/2019/10/06/marwt5hyuUSieNn.jpg" alt="sand.jpg"></p>
+<p><center>操场砂砾地面(sand)</center></p>
+<p><img src="https://i.loli.net/2019/10/06/FarHxo1WDZE7gAI.jpg" alt="earth.jpg"></p>
+<p><center>干旱地面(earth)</center></p>
+<p>从程序2读入图片，并运行：</p>
+<p><img src="https://i.loli.net/2019/10/06/gUT9bDpSO2Get1i.png" alt="Snip20191006_10.png"></p>
+<p><center>灰度图像及灰度直方图</center></p>
+<p><img src="https://i.loli.net/2019/10/06/2jfk1pcw7mysgFZ.png" alt="Snip20191006_9.png"></p>
+<p><center>灰度图像及灰度直方图</center></p>
+<p><img src="https://i.loli.net/2019/10/06/JOrlnRdawfet2gq.png" alt="Snip20191006_11.png"></p>
+<p><center>灰度图像及灰度直方图</center></p>
+<p><img src="https://i.loli.net/2019/10/06/BFXRLwhm6JMvolK.png" alt="Snip20191006_7.png"></p>
+<p><center>灰度图像及灰度直方图</center></p>
+<h4 id="4-2解算数据处理"><a href="#4-2解算数据处理" class="headerlink" title=".4.2解算数据处理"></a>.4.2解算数据处理</h4><p>经过对四副图片的逐一解算，得到四组纹理特征参量，对纹理参量进行统计分析：</p>
+<p><img src="https://i.loli.net/2019/10/06/1OBGyVRTtalC9kf.png" alt="Snip20191006_17.png"></p>
+<p><center>熵值大小</center></p>
+<p><img src="https://i.loli.net/2019/10/06/ycVeZQtEWmag2qA.png" alt="Snip20191006_19.png"></p>
+<p><center>相关性大小</center></p>
+<p><img src="https://i.loli.net/2019/10/06/9kOKNz13d2PhbRJ.png" alt="Snip20191006_16.png"></p>
+<p><center>能量大小</center></p>
+<p><img src="https://i.loli.net/2019/10/06/nKkGNg2hiRTBj6a.png" alt="Snip20191006_18.png"></p>
+<p><center>惯性矩大小</center></p>
+<p>在<code>MATLAB</code>中对数据做可视化：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">plot</span>(xgx);</span><br><span class="line"><span class="built_in">hold</span>;</span><br><span class="line"><span class="built_in">plot</span>(xgx,<span class="string">'ks'</span>)</span><br><span class="line">title(<span class="string">'相关性'</span>);</span><br><span class="line">xlabel(<span class="string">'灰度基数'</span>);</span><br><span class="line">ylabel(<span class="string">'相关性值'</span>);</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">'tree'</span>,<span class="string">'earth'</span>,<span class="string">'sky'</span>,<span class="string">'sand'</span>);</span><br><span class="line">grid;</span><br></pre></td></tr></table></figure>
+<p>更改程序参数，输出结果：</p>
+<p><img src="https://i.loli.net/2019/10/06/7omRJt4Q59ISwaC.png" alt="Snip20191006_12.png"></p>
+<p><center>能量大小分布</center></p>
+<p><img src="https://i.loli.net/2019/10/06/dqhblmPcikIS91A.png" alt="Snip20191006_14.png"></p>
+<p><center>惯性矩大小分布</center></p>
+<p><img src="https://i.loli.net/2019/10/06/c4VYQS3MJObCzF8.png" alt="Snip20191006_13.png"></p>
+<p><center>熵大小分布</center></p>
+<p><img src="https://i.loli.net/2019/10/06/xTY5eczfCgntXZE.png" alt="Snip20191006_15.png"></p>
+<p><center>相关性大小分布</center></p>
+<h4 id="4-3分析解读"><a href="#4-3分析解读" class="headerlink" title=".4.3分析解读"></a>.4.3分析解读</h4><p>从数据可视化图像中可以看到，天空图像的相关性与能量较大，熵与惯性矩（对比度）较小，能量大说明图像灰度分布均匀，图像纹理绞细致，熵值小说明，图像的复杂程度低（反观其他三张图像熵值都较高）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatIMG8 下午4.09.56.jpeg" alt="何大仁 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的个人微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+            <a href="/tags/图像处理/" rel="tag"># 图像处理</a>
+          
+            <a href="/tags/纹理特征/" rel="tag"># 纹理特征</a>
+          
+            <a href="/tags/灰度共生矩阵/" rel="tag"># 灰度共生矩阵</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/30/solidworks大型位移接触/" rel="next" title="solidworks大型位移接触">
+                <i class="fa fa-chevron-left"></i> solidworks大型位移接触
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_7695(20190629-201424).jpg" alt="何大仁">
+            
+              <p class="site-author-name" itemprop="name">何大仁</p>
+              <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/stkdaren" target="_blank" title="仓库">
+                      
+                        <i class="fa fa-fw fa-github"></i>仓库</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tuchong.com/3362030/" target="_blank" title="图虫">
+                      
+                        <i class="fa fa-fw fa-skype"></i>图虫</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/403730649" target="_blank" title="哔哩">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://douban.com/people/152247019/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1主要内容概述"><span class="nav-number">1.</span> <span class="nav-text">.1主要内容概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1灰度共生矩阵概念"><span class="nav-number">1.1.</span> <span class="nav-text">.1.1灰度共生矩阵概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2特征参数"><span class="nav-number">1.2.</span> <span class="nav-text">.1.2特征参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#角二阶矩（能量angular-second-moment）"><span class="nav-number">1.2.1.</span> <span class="nav-text">角二阶矩（能量angular second moment）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对比度（惯性矩）"><span class="nav-number">1.2.2.</span> <span class="nav-text">对比度（惯性矩）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相关度（inverse-different-moment）"><span class="nav-number">1.2.3.</span> <span class="nav-text">相关度（inverse different moment）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#熵-entropy"><span class="nav-number">1.2.4.</span> <span class="nav-text">熵(entropy)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2程序设计1"><span class="nav-number">2.</span> <span class="nav-text">.2程序设计1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3程序设计2"><span class="nav-number">3.</span> <span class="nav-text">.3程序设计2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4实验测试"><span class="nav-number">4.</span> <span class="nav-text">.4实验测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1图像准备及程序解算"><span class="nav-number">4.1.</span> <span class="nav-text">.4.1图像准备及程序解算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2解算数据处理"><span class="nav-number">4.2.</span> <span class="nav-text">.4.2解算数据处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3分析解读"><span class="nav-number">4.3.</span> <span class="nav-text">.4.3分析解读</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何大仁</span>
+
+  
+</div>
+
+
+  
+
+
+
+
+
+ 
+
+
+
+ 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 19.8k 字</span>
+</div>
+
+
+
+
+
+<br>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
