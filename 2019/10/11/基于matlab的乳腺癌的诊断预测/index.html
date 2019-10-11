@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SVM,MATLAB,机器学习,算法,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="SVM,MATLAB,机器学习,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于matlab的乳腺癌的诊断预测">
+<meta property="og:url" content="http://yoursite.com/2019/10/11/基于matlab的乳腺癌的诊断预测/index.html">
+<meta property="og:site_name" content="何大仁|机械之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570808192547&di=7db594ad030ab952d6d37acd3727b600&imgtype=0&src=http%3A%2F%2Fk.zol-img.com.cn%2Fnbbbs%2F5771%2Fa5770670_s.jpg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8Bs9w3AdqDKVLkOHndYQ9Uotklx7OmVkrgHh8RMhn9b6xKnHhOAiaOj9Q/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8Bww5iaRSjibk5pTTTLV2ic5oluaPsqnVXFz2uj2bA6UHgxenN3REbwv4Hw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8B1fsaCSoeErxQaTEb2dGBtJ766EKiadBHmPCll63WJjhB1CE5VAzPibeQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8BELBq8f6WJzHtYEdfxViajgK2vrSf2ic7IjZTGywjMNEpibfdG2pCFeXrQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2019-10-11T12:48:40.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于matlab的乳腺癌的诊断预测">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1570808192547&di=7db594ad030ab952d6d37acd3727b600&imgtype=0&src=http%3A%2F%2Fk.zol-img.com.cn%2Fnbbbs%2F5771%2Fa5770670_s.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/11/基于matlab的乳腺癌的诊断预测/">
+
+
+
+
+
+
+
+  <title>基于matlab的乳腺癌的诊断预测 | 何大仁|机械之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何大仁|机械之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚持阅读，稳定输出！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/11/基于matlab的乳腺癌的诊断预测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何大仁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/IMG_9158(20191004-194448).jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何大仁|机械之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于matlab的乳腺癌的诊断预测</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-11T20:45:58+08:00">
+                2019-10-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-11T20:48:40+08:00">
+                2019-10-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像识别/" itemprop="url" rel="index">
+                    <span itemprop="name">图像识别</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像识别/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像识别/MATLAB/SVM/" itemprop="url" rel="index">
+                    <span itemprop="name">SVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1570808192547&amp;di=7db594ad030ab952d6d37acd3727b600&amp;imgtype=0&amp;src=http%3A%2F%2Fk.zol-img.com.cn%2Fnbbbs%2F5771%2Fa5770670_s.jpg" alt="timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1570808192547&amp;di=7db594ad030ab952d6d37acd3727b600&amp;imgtype=0&amp;src=http%3A%2F%2Fk.zol-img.com.cn%2Fnbbbs%2F5771%2Fa5770670_s"></p>
+<a id="more"></a>
+<p>软件：MATLAB，版本：<code>`2018a</code>，插件:<code>libsvm</code>工具，版本：<code>3.23</code>。</p>
+<h3 id="乳腺癌诊断简介："><a href="#乳腺癌诊断简介：" class="headerlink" title="乳腺癌诊断简介："></a>乳腺癌诊断简介：</h3><p>在直流状态下，不同生物组织会表现出不同的电阻特性，生物组织电抗随着外加电信号的频率的不同而表现出较大的差异。</p>
+<p>常见的电阻抗测量方法有：电阻抗频谱法，阻抗扫描成像法、电阻抗断层成像法等。</p>
+<p>本次分类数据来源于<code>`jossine</code>研究小组，他们使用电阻抗频谱法测量了来自<code>64</code>位妇女的<code>106</code>个乳腺样本的电阻抗特性，并将其分为六类：<strong><em>乳腺组织、结蹄组织、脂肪组织</em></strong>、<strong>乳腺病、纤维瘤和乳腺癌</strong>，其中前三种是正常组织，后三种是病变组织「其中前两组是良性病变」。</p>
+<h3 id="所提取的9个特征："><a href="#所提取的9个特征：" class="headerlink" title="所提取的9个特征："></a>所提取的9个特征：</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8Bs9w3AdqDKVLkOHndYQ9Uotklx7OmVkrgHh8RMhn9b6xKnHhOAiaOj9Q/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>对这<code>`106</code>组，以<code>9</code>个输入信号为特征的数据进行分类，实际上可以将乳腺组织、结蹄组织、脂肪组织，归于无病变的一类；乳腺病、纤维瘤和乳腺癌归于有病变的一类，这样看来，其实也就是一个二分类问题。但本次分类标签的设定仍然是以六个类别进行的（改成两类标签太麻烦了/汗…<code>106</code>组）</p>
+<h3 id="程序代码："><a href="#程序代码：" class="headerlink" title="程序代码："></a>程序代码：</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span><span class="comment">%% 清空环境变量</span></span><br><span class="line"> <span class="number">2</span>clear all</span><br><span class="line"> <span class="number">3</span>clc</span><br><span class="line"> <span class="number">4</span>tic   <span class="comment">%开始计时</span></span><br><span class="line"> <span class="number">5</span><span class="comment">%% 导入数据</span></span><br><span class="line"> <span class="number">6</span>load(<span class="string">'/Users/yons/Desktop/SVM乳腺癌诊断测试/BreastTissue_data.mat'</span>)</span><br><span class="line"> <span class="number">7</span><span class="comment">% 随机产生训练集和测试集</span></span><br><span class="line"> <span class="number">8</span>d = randperm(<span class="built_in">size</span>(matrix,<span class="number">1</span>));</span><br><span class="line"> <span class="number">9</span><span class="comment">% 训练集——80个样本</span></span><br><span class="line"><span class="number">10</span>train_matrix = matrix(d(<span class="number">1</span>:<span class="number">80</span>),:);</span><br><span class="line"><span class="number">11</span>train_label = label(d(<span class="number">1</span>:<span class="number">80</span>),:);</span><br><span class="line"><span class="number">12</span><span class="comment">% 测试集——26个样本</span></span><br><span class="line"><span class="number">13</span>test_matrix = matrix(d(<span class="number">81</span>:<span class="keyword">end</span>),:);</span><br><span class="line"><span class="number">14</span>test_label = label(d(<span class="number">81</span>:<span class="keyword">end</span>),:);</span><br><span class="line"><span class="number">15</span><span class="comment">%% 数据归一化</span></span><br><span class="line"><span class="number">16</span>[Train_matrix,PS] = mapminmax(train_matrix');</span><br><span class="line"><span class="number">17</span>Train_matrix = Train_matrix';</span><br><span class="line"><span class="number">18</span>Test_matrix = mapminmax(<span class="string">'apply'</span>,test_matrix',PS);</span><br><span class="line"><span class="number">19</span>Test_matrix = Test_matrix';</span><br><span class="line"><span class="number">20</span><span class="comment">%% SVM创建/训练(RBF核函数)</span></span><br><span class="line"><span class="number">21</span><span class="comment">% 寻找最佳c/g参数——交叉验证方法</span></span><br><span class="line"><span class="number">22</span>[c,g] = <span class="built_in">meshgrid</span>(<span class="number">-10</span>:<span class="number">0.2</span>:<span class="number">10</span>,<span class="number">-10</span>:<span class="number">0.2</span>:<span class="number">10</span>);   <span class="comment">%c惩罚因子，g核函数中函数设置(默认1/k)      </span></span><br><span class="line"><span class="number">23</span>[m,n] = <span class="built_in">size</span>(c);</span><br><span class="line"><span class="number">24</span>cg = <span class="built_in">zeros</span>(m,n);</span><br><span class="line"><span class="number">25</span><span class="built_in">eps</span> = <span class="number">10</span>^(<span class="number">-4</span>);</span><br><span class="line"><span class="number">26</span>v = <span class="number">5</span>;                                     <span class="comment">%随机的将数据分为5个部分，并进行交互检验准确度和均方根误差</span></span><br><span class="line"><span class="number">27</span>bestc = <span class="number">1</span>;</span><br><span class="line"><span class="number">28</span>bestg = <span class="number">0.1</span>;</span><br><span class="line"><span class="number">29</span>bestacc = <span class="number">0</span>;</span><br><span class="line"><span class="number">30</span><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line"><span class="number">31</span>    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:n</span><br><span class="line"><span class="number">32</span>        cmd = [<span class="string">'-v '</span>,num2str(v),<span class="string">' -t 2'</span>,<span class="string">' -c '</span>,num2str(<span class="number">2</span>^c(<span class="built_in">i</span>,<span class="built_in">j</span>)),<span class="string">' -g '</span>,num2str(<span class="number">2</span>^g(<span class="built_in">i</span>,<span class="built_in">j</span>))];</span><br><span class="line"><span class="number">33</span>        cg(<span class="built_in">i</span>,<span class="built_in">j</span>) = libsvmtrain(train_label,Train_matrix,cmd);     </span><br><span class="line"><span class="number">34</span>        <span class="keyword">if</span> cg(<span class="built_in">i</span>,<span class="built_in">j</span>) &gt; bestacc</span><br><span class="line"><span class="number">35</span>            bestacc = cg(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">36</span>            bestc = <span class="number">2</span>^c(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">37</span>            bestg = <span class="number">2</span>^g(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">38</span>        <span class="keyword">end</span>        </span><br><span class="line"><span class="number">39</span>        <span class="keyword">if</span> <span class="built_in">abs</span>( cg(<span class="built_in">i</span>,<span class="built_in">j</span>)-bestacc )&lt;=<span class="built_in">eps</span> &amp;&amp; bestc &gt; <span class="number">2</span>^c(<span class="built_in">i</span>,<span class="built_in">j</span>) </span><br><span class="line"><span class="number">40</span>            bestacc = cg(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">41</span>            bestc = <span class="number">2</span>^c(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">42</span>            bestg = <span class="number">2</span>^g(<span class="built_in">i</span>,<span class="built_in">j</span>);</span><br><span class="line"><span class="number">43</span>        <span class="keyword">end</span>               </span><br><span class="line"><span class="number">44</span>    <span class="keyword">end</span></span><br><span class="line"><span class="number">45</span><span class="keyword">end</span></span><br><span class="line"><span class="number">46</span>cmd = [<span class="string">' -t 2'</span>,<span class="string">' -c '</span>,num2str(bestc),<span class="string">' -g '</span>,num2str(bestg)];  <span class="comment">%RBF核</span></span><br><span class="line"><span class="number">47</span>model = libsvmtrain(train_label,Train_matrix,cmd);</span><br><span class="line"><span class="number">48</span><span class="comment">%% SVM仿真测试</span></span><br><span class="line"><span class="number">49</span>[predict_label_1,accuracy_1,~] = svmpredict(train_label,Train_matrix,model);</span><br><span class="line"><span class="number">50</span>[predict_label_2,accuracy_2,~] = svmpredict(test_label,Test_matrix,model);</span><br><span class="line"><span class="number">51</span>result_1 = [train_label predict_label_1];</span><br><span class="line"><span class="number">52</span>result_2 = [test_label predict_label_2];</span><br><span class="line"><span class="number">53</span>toc        <span class="comment">%结束计时</span></span><br><span class="line"><span class="number">54</span><span class="comment">%% 绘图</span></span><br><span class="line"><span class="number">55</span><span class="built_in">figure</span></span><br><span class="line"><span class="number">56</span><span class="built_in">plot</span>(<span class="number">1</span>:<span class="built_in">length</span>(test_label),test_label,<span class="string">'r-*'</span>)</span><br><span class="line"><span class="number">57</span><span class="built_in">hold</span> on</span><br><span class="line"><span class="number">58</span><span class="built_in">plot</span>(<span class="number">1</span>:<span class="built_in">length</span>(test_label),predict_label_2,<span class="string">'b:o'</span>)</span><br><span class="line"><span class="number">59</span>grid on</span><br><span class="line"><span class="number">60</span><span class="built_in">legend</span>(<span class="string">'真实类别'</span>,<span class="string">'预测类别'</span>)</span><br><span class="line"><span class="number">61</span>xlabel(<span class="string">'测试集样本编号'</span>)</span><br><span class="line"><span class="number">62</span>ylabel(<span class="string">'测试集样本类别'</span>)</span><br><span class="line"><span class="number">63</span>string = &#123;<span class="string">'测试集SVM预测结果对比(RBF核函数)'</span>;</span><br><span class="line"><span class="number">64</span>          [<span class="string">'accuracy = '</span> num2str(accuracy_2(<span class="number">1</span>)) <span class="string">'%'</span>]&#125;;</span><br><span class="line"><span class="number">65</span>title(string)</span><br></pre></td></tr></table></figure>
+<p>使用<code>libsvm</code>对程序进行仿真时，在第<code>49、50</code>行代码，“~”代表一位数据集，实际上用不到，所以用<code>“~”代替了，但如果没有这样一个“~”符号</code>，将不会产生任何结果，还会报错。</p>
+<p>此外，<code>libsvm</code>中的<code>svmtrain（）</code>函数与<code>matlab</code>自带的函数会发生冲突，如果在<code>2018a</code>版本中仍然使用<code>svmtrain（）</code>函数，调试过程中会提示：<code>svmtrain（）</code>函数已删除改用<code>fitcsvm()</code>函数代替。</p>
+<p>而使用<code>fitcsvm()</code>函数又会报错，<strong>解决办法是</strong>更改<code>libsvm</code>工具箱里面的<code>svmtrain.mexmaci64</code>和<code>svmtrain.c</code>文件的名字，例如可以改成：<code>`libsvmtrain.mexmaci64</code>和<code>libsvmtrain.c</code>。</p>
+<p>名称更改之后重新设定路径。</p>
+<p>细心的话可以看到，代码中第<code>33行</code>与第<code>47`行已经把`svmtrain（）</code>函数换成了<code>libsvmtrain()</code>函数。</p>
+<p>运行代码：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1optimization finished, #iter = 271</span><br><span class="line"><span class="number">2</span>nu = <span class="number">0.338123</span></span><br><span class="line"><span class="number">3</span>obj = <span class="number">-968.111130</span>, rho = <span class="number">4.590370</span></span><br><span class="line"><span class="number">4</span>nSV = <span class="number">13</span>, nBSV = <span class="number">3</span></span><br><span class="line"><span class="number">5</span>Total nSV = <span class="number">59</span></span><br><span class="line"><span class="number">6</span>Accuracy = <span class="number">96.25</span><span class="comment">% (77/80) (classification)</span></span><br><span class="line"><span class="number">7</span>Accuracy = <span class="number">61.5385</span><span class="comment">% (16/26) (classification)</span></span><br><span class="line"><span class="number">8</span>时间已过 <span class="number">39.223038</span> 秒。</span><br></pre></td></tr></table></figure>
+<p>可以看到，经过<code>271</code>次迭代最终在测试集上的准确率只有<code>61.5385%</code>，总的支持向量为<code>59</code>个，因为这里训练集与测试集是随机产生的，所以造成精度不高。不过可以通过多次运行得到一个较好的<code>d</code>矩阵，以它分得一个较好的训练集与测试集，<code>d</code>选择的好，精度一般可以达到<code>90%</code>以上。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8Bww5iaRSjibk5pTTTLV2ic5oluaPsqnVXFz2uj2bA6UHgxenN3REbwv4Hw/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>而且因为d每次运行，都会随机更改，所以每次运行结果都是不一样的，例如这里再次运行一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1optimization finished, #iter = 91</span><br><span class="line">2nu = 0.556277</span><br><span class="line">3obj = -114.332247, rho = -0.801996</span><br><span class="line">4nSV = 23, nBSV = 8</span><br><span class="line">5Total nSV = 76</span><br><span class="line">6Accuracy = 96.25% (77/80) (classification)</span><br><span class="line">7Accuracy = 84.6154% (22/26) (classification)</span><br><span class="line">8时间已过 25.705216 秒。</span><br></pre></td></tr></table></figure>
+<p>这次运行只迭代了91次，精度达到了84.6154%，可见这此运行产生的随机矩阵d还是比较好的。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8B1fsaCSoeErxQaTEb2dGBtJ766EKiadBHmPCll63WJjhB1CE5VAzPibeQ/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>如果不选用随机矩阵来产生训练集和测试集，例如使用前<code>80</code>组数据作为训练集，后26组数据作为测试集结果会怎样呢？</p>
+<p>更改训练集与测试集的分割代码：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="comment">%% 导入数据</span></span><br><span class="line"><span class="number">2</span>load(<span class="string">'/Users/yons/Desktop/SVM乳腺癌诊断测试/BreastTissue_data.mat'</span>)</span><br><span class="line"><span class="number">3</span><span class="comment">% 训练集——80个样本</span></span><br><span class="line"><span class="number">4</span>train_matrix = matrix(<span class="number">1</span>:<span class="number">80</span>,:);</span><br><span class="line"><span class="number">5</span>train_label = label(<span class="number">1</span>:<span class="number">80</span>,:);</span><br><span class="line"><span class="number">6</span><span class="comment">% 测试集——26个样本</span></span><br><span class="line"><span class="number">7</span>test_matrix = matrix(<span class="number">81</span>:<span class="keyword">end</span>,:);</span><br><span class="line"><span class="number">8</span>test_label = label(<span class="number">81</span>:<span class="keyword">end</span>,:);</span><br></pre></td></tr></table></figure>
+<p>运行之后：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1optimization finished, #iter = 8</span><br><span class="line"><span class="number">2</span>nu = <span class="number">0.022060</span></span><br><span class="line"><span class="number">3</span>obj = <span class="number">-222.609543</span>, rho = <span class="number">0.373562</span></span><br><span class="line"><span class="number">4</span>nSV = <span class="number">3</span>, nBSV = <span class="number">0</span></span><br><span class="line"><span class="number">5</span>Total nSV = <span class="number">55</span></span><br><span class="line"><span class="number">6</span>Accuracy = <span class="number">75</span><span class="comment">% (60/80) (classification)</span></span><br><span class="line"><span class="number">7</span>Accuracy = <span class="number">15.3846</span><span class="comment">% (4/26) (classification)</span></span><br></pre></td></tr></table></figure>
+<p>最后精度只有<code>15.3846%</code>，真是一个糟糕的训练集与测试集，这样泛化能力就太差了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/uDWBgOtWVbOWqdvR9XBRPz2odLppDT8BELBq8f6WJzHtYEdfxViajgK2vrSf2ic7IjZTGywjMNEpibfdG2pCFeXrQ/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>从以上对比可以看到：</p>
+<ul>
+<li>一个好的、合适的训练集和测试集的选取，对结果的影响是很大的。</li>
+<li>除此之外，更为重要的还有如何对核函数的关键参数<code>c</code>和<code>g</code>优化选取。</li>
+</ul>
+<p>本文中我采用的是使用<code>meshgrid()</code>函数，让<code>c</code>和<code>g</code>在间隔为<code>2^(0.2)</code>下，经过很多次循环对比来优选的(这里方法也有很多)。</p>
+<p>这样两个问题我想应该是关键问题，怎么更好、更有效的解决它们呢？下次再讨论吧。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatIMG8 下午4.09.56.jpeg" alt="何大仁 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的个人微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/11/做事情不以我为核心/" rel="next" title="做事情不以我为核心">
+                <i class="fa fa-chevron-left"></i> 做事情不以我为核心
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_9158(20191004-194448).jpg" alt="何大仁">
+            
+              <p class="site-author-name" itemprop="name">何大仁</p>
+              <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/stkdaren" target="_blank" title="仓库">
+                      
+                        <i class="fa fa-fw fa-github"></i>仓库</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tuchong.com/3362030/" target="_blank" title="图虫">
+                      
+                        <i class="fa fa-fw fa-skype"></i>图虫</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/403730649" target="_blank" title="哔哩">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://douban.com/people/152247019/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#乳腺癌诊断简介："><span class="nav-number">1.</span> <span class="nav-text">乳腺癌诊断简介：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所提取的9个特征："><span class="nav-number">2.</span> <span class="nav-text">所提取的9个特征：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述："><span class="nav-number">3.</span> <span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序代码："><span class="nav-number">4.</span> <span class="nav-text">程序代码：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何大仁</span>
+
+  
+</div>
+
+
+  
+
+
+
+
+
+ 
+
+
+
+ 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 27.3k 字</span>
+</div>
+
+
+
+
+
+<br>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
