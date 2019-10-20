@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="图像处理,MATLAB,">
+
+
+
+
+
+
+
+
+
+
+<meta name="keywords" content="图像处理,MATLAB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB图像处理函数学习">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/MATLAB图像处理函数学习/index.html">
+<meta property="og:site_name" content="何大仁|机械之路">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/10/20/o5GlIjx28zJDrEs.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/20/8K4qxld6OmthfgF.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/20/wjzG3Ab5VSmqLCI.png">
+<meta property="og:updated_time" content="2019-10-20T12:40:23.272Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MATLAB图像处理函数学习">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/20/o5GlIjx28zJDrEs.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/20/MATLAB图像处理函数学习/">
+
+
+
+
+
+
+
+  <title>MATLAB图像处理函数学习 | 何大仁|机械之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">何大仁|机械之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">坚持阅读，稳定输出！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/MATLAB图像处理函数学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何大仁">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/IMG_9158(20191004-194448).jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="何大仁|机械之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MATLAB图像处理函数学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T19:49:18+08:00">
+                2019-10-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-20T20:40:23+08:00">
+                2019-10-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图像处理/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  941
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/10/20/o5GlIjx28zJDrEs.png" alt="Snip20191020_17.png"></p>
+<a id="more"></a>
+<h3 id="padarray函数"><a href="#padarray函数" class="headerlink" title="padarray函数"></a><code>padarray</code>函数</h3><p><strong>功能：</strong>填充图像或填充数组。</p>
+<p><strong>用法：</strong><code>B = padarray(A,padsize,padval,direction)</code></p>
+<p>A为输入图像，B为填充后的图像，padsize给出了给出了填充的行数和列数，通常用[r c]来表示。padval和direction分别表示填充方法和方向。它们的具体值和描述如下：</p>
+<p><code>padval：</code></p>
+<ul>
+<li><code>&#39;symmetric&#39;</code>表示图像大小通过围绕边界进行镜像反射来扩展；            </li>
+<li><code>&#39;replicate&#39;</code>表示图像大小通过复制外边界中的值来扩展；</li>
+<li><code>&#39;circular&#39;</code>图像大小通过将图像看成是一个二维周期函数的一个周期来进行扩展。</li>
+</ul>
+<p><code>direction：</code></p>
+<ul>
+<li><code>&#39;pre&#39;</code>表示在每一维的第一个元素前填充；</li>
+<li><code>&#39;post&#39;</code>表示在每一维的最后一个元素后填充；</li>
+<li><code>&#39;both&#39;</code>表示在每一维的第一个元素前和最后一个元素后填充，此项为默认值。</li>
+</ul>
+<p>若参量中不包括<code>`direction</code>，则默认值为<code>&#39;both&#39;</code>。</p>
+<p>若参量中不包括任何参数，则默认填充为零且方向为<code>&#39;both&#39;</code>。</p>
+<p>在计算结束时，图像会被修剪成原始大小。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;A = [<span class="number">3</span> <span class="number">2</span> <span class="number">8</span>; <span class="number">3</span> <span class="number">4</span> <span class="number">5</span>];  </span><br><span class="line">&gt;&gt;B=padarray(A,[<span class="number">3</span> <span class="number">4</span>], <span class="string">'replicate'</span>,<span class="string">'post'</span>) </span><br><span class="line"><span class="comment">%输出</span></span><br><span class="line">B =</span><br><span class="line">    <span class="number">3</span>     <span class="number">2</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">8</span>  </span><br><span class="line">    <span class="number">3</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>  </span><br><span class="line">    <span class="number">3</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span> </span><br><span class="line">    <span class="number">3</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span> </span><br><span class="line">    <span class="number">3</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = [<span class="number">3</span> <span class="number">8</span>; <span class="number">4</span> <span class="number">5</span>];</span><br><span class="line">&gt;&gt; B=padarray(A,[<span class="number">2</span> <span class="number">2</span>], <span class="string">'symmetric'</span>, <span class="string">'both'</span>)</span><br><span class="line">B =</span><br><span class="line">     <span class="number">5</span>     <span class="number">4</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">4</span></span><br><span class="line">     <span class="number">8</span>     <span class="number">3</span>     <span class="number">3</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">8</span>     <span class="number">3</span>     <span class="number">3</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">5</span>     <span class="number">4</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">4</span></span><br><span class="line">     <span class="number">5</span>     <span class="number">4</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">5</span>     <span class="number">4</span></span><br><span class="line">     <span class="number">8</span>     <span class="number">3</span>     <span class="number">3</span>     <span class="number">8</span>     <span class="number">8</span>     <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h3 id="bwconncomp函数"><a href="#bwconncomp函数" class="headerlink" title="bwconncomp函数"></a><code>bwconncomp</code>函数</h3><p>函数<code>bwlabel</code>，<code>belabeln</code>和<code>bwconncomp</code>都是标记二值图像中的连通域。<code>bwconncomp</code>可以替代<code>bwlabel and bwlabeln</code>的用法，而且需要相当小的计算空间并且比一些较早的函数计算速度更快。</p>
+<p><img src="https://i.loli.net/2019/10/20/8K4qxld6OmthfgF.png" alt="Snip20191020_15.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CC = bwconncomp(BW,<span class="number">4</span>);	    	<span class="comment">%BW为二值化后的图像</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CC中返回内容:</span><br><span class="line"></span><br><span class="line">    Connectivity: <span class="number">4</span>   --&gt; <span class="number">4</span>连通</span><br><span class="line">    ImageSize: [<span class="number">5</span> <span class="number">5</span>]  -&gt; 图像大小</span><br><span class="line">    NumObjects: <span class="number">3</span>     -&gt; 找到连通区域数量</span><br><span class="line">    PixelIdxList:    --&gt;连通区域序索引列号</span><br></pre></td></tr></table></figure>
+<h3 id="cellfun函数"><a href="#cellfun函数" class="headerlink" title="cellfun函数"></a><code>cellfun</code>函数</h3><p><strong><code>cellfun</code>将函数用于元胞数组中的每个<code>cell</code></strong>,<code>cellfun</code>的操作对象是<code>cell</code>数组.</p>
+<p>Eg:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%Compute the mean of each vector in cell array C.</span></span><br><span class="line">C = &#123;<span class="number">1</span>:<span class="number">10</span>, [<span class="number">2</span>; <span class="number">4</span>; <span class="number">6</span>], []&#125;;</span><br><span class="line">averages = <span class="built_in">cellfun</span>(@<span class="built_in">mean</span>, C)</span><br><span class="line"><span class="comment">%This code returns</span></span><br><span class="line">averages =</span><br><span class="line">    <span class="number">5.5000</span>    <span class="number">4.0000</span>       NaN</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%Create a cell array that contains strings, and abbreviate those strings to the first three characters. Because the output strings are nonscalar, set UniformOutput to false.</span></span><br><span class="line">days = &#123;<span class="string">'Monday'</span>, <span class="string">'Tuesday'</span>, <span class="string">'Wednesday'</span>, <span class="string">'Thursday'</span>, <span class="string">'Friday'</span>&#125;;</span><br><span class="line">abbrev = <span class="built_in">cellfun</span>(@(x) x(<span class="number">1</span>:<span class="number">3</span>), days, <span class="string">'UniformOutput'</span>, <span class="built_in">false</span>)</span><br><span class="line"><span class="comment">%The syntax @(x) creates an anonymous function. This code returns</span></span><br><span class="line">abbrev = </span><br><span class="line">    <span class="string">'Mon'</span>    <span class="string">'Tue'</span>    <span class="string">'Wed'</span>    <span class="string">'Thu'</span>    <span class="string">'Fri'</span></span><br></pre></td></tr></table></figure>
+<p>Eg:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">X = &#123;<span class="number">5</span>:<span class="number">5</span>:<span class="number">100</span>, <span class="number">10</span>:<span class="number">10</span>:<span class="number">100</span>, <span class="number">20</span>:<span class="number">20</span>:<span class="number">100</span>&#125;;</span><br><span class="line">Y = &#123;<span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">20</span>), <span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">10</span>), <span class="built_in">rand</span>(<span class="number">1</span>,<span class="number">5</span>)&#125;;</span><br><span class="line"><span class="built_in">figure</span></span><br><span class="line"><span class="built_in">hold</span> on</span><br><span class="line">p = <span class="built_in">cellfun</span>(@<span class="built_in">plot</span>,X,Y);</span><br><span class="line">p(<span class="number">1</span>).Marker = <span class="string">'o'</span>;</span><br><span class="line">p(<span class="number">2</span>).Marker = <span class="string">'+'</span>;</span><br><span class="line">p(<span class="number">3</span>).Marker = <span class="string">'s'</span>;</span><br><span class="line"><span class="built_in">hold</span> off</span><br></pre></td></tr></table></figure>
+<p>输出图像：</p>
+<p><img src="https://i.loli.net/2019/10/20/wjzG3Ab5VSmqLCI.png" alt="Snip20191020_16.png"></p>
+<h3 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h3><hr>
+<p><code>J=imcomplement（I）</code>颜色取反 ；</p>
+<p><code>imadd</code>       两个图像相加，或者一个图像加上一个常量；<br><code>imsubstract</code>两个图像相减，或者一个图像减掉一个常量；<br><code>immultiply</code> 两个图像相乘，或者一个图像乘上一个常量；</p>
+<p><code>imdivide</code>    两个图像相除，或者一个图像除以一个常量；<br><code>imabsdiff</code> `  两个图像的差的绝对值；</p>
+<p><code>imcomplement</code>求一个图像的<strong>反色</strong>图；<br><code>inlincomb</code>  求一组图像的线性组合；</p>
+<p><code>filter2</code>    滤波器设计；</p>
+<p><code>fspecial</code>   产生预定义滤波器；</p>
+<p><code>stdfilt</code>  求图像的局部标准差；</p>
+<p><code>roipoly</code>指定感兴趣多边形区域    自编文件名函数<code>CutIntrest.m；</code></p>
+<p><code>imcontour</code>  灰度图像轮廓；</p>
+<p><code>hough</code>       <code>houth</code>变换；</p>
+<p><strong><code>houghpeaks</code></strong> 识别<code>Hough</code>中``的峰值 ；</p>
+<p><code>bestblk</code>     确定进行块操作的块大小；</p>
+<p><code>blkproc</code>    实现图像的显示块操作；</p>
+<p><code>col2im</code>     将矩阵的列重新组织到块中；</p>
+<p><code>colfilt</code>  利用列相关函数进行边沿操作；</p>
+<p><code>im2col</code>   重调图像块为列 <strong>注意参数<code>‘distinct’</code>和<code>‘sliding’</code>的区别。不能默认；</strong></p>
+<p><code>nlfilter</code>  进行边沿操作。</p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/WechatIMG8 下午4.09.56.jpeg" alt="何大仁 wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的个人微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图像处理/" rel="tag"># 图像处理</a>
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/18/这些工具用起来“真香”/" rel="next" title="这些工具用起来“真香”">
+                <i class="fa fa-chevron-left"></i> 这些工具用起来“真香”
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_9158(20191004-194448).jpg" alt="何大仁">
+            
+              <p class="site-author-name" itemprop="name">何大仁</p>
+              <p class="site-description motion-element" itemprop="description">人生到处知何似，应似飞鸿踏雪泥；泥上偶然留指爪，鸿飞那复计东西。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/stkdaren" target="_blank" title="仓库">
+                      
+                        <i class="fa fa-fw fa-github"></i>仓库</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://tuchong.com/3362030/" target="_blank" title="图虫">
+                      
+                        <i class="fa fa-fw fa-skype"></i>图虫</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/403730649" target="_blank" title="哔哩">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>哔哩</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://douban.com/people/152247019/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#padarray函数"><span class="nav-number">1.</span> <span class="nav-text">padarray函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bwconncomp函数"><span class="nav-number">2.</span> <span class="nav-text">bwconncomp函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cellfun函数"><span class="nav-number">3.</span> <span class="nav-text">cellfun函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他函数"><span class="nav-number">4.</span> <span class="nav-text">其他函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何大仁</span>
+
+  
+</div>
+
+
+  
+
+
+
+
+
+ 
+
+
+
+ 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">全站共 31.5k 字</span>
+</div>
+
+
+
+
+
+<br>
+
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style="display:none">
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
