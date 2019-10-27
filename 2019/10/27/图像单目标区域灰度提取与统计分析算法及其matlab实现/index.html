@@ -129,11 +129,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/UHWifTm2M14Kb5R.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/H1O8KlZFswQ65pb.png">
+<meta property="og:image" content="https://i.loli.net/2019/10/27/76f1nUIZQ2VHw5x.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/LK6fV8rgdWabMQF.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/oczgnNV38rqtXph.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/3QDnSeUfIENtaoA.png">
 <meta property="og:image" content="https://i.loli.net/2019/10/27/6dgXmnhD4awczPf.png">
-<meta property="og:updated_time" content="2019-10-27T13:09:02.509Z">
+<meta property="og:updated_time" content="2019-10-27T13:12:19.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像单目标区域灰度提取与统计分析算法及其matlab实现">
 <meta name="twitter:image" content="https://i.loli.net/2019/10/27/UHWifTm2M14Kb5R.png">
@@ -356,7 +357,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-27T21:09:02+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-27T21:12:19+08:00">
                 2019-10-27
               </time>
             
@@ -428,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  530
+                  505
                 </span>
               
 
@@ -489,10 +490,10 @@ q_{ij}=
 \end{cases}</script><p>设向量组：</p>
 <script type="math/tex; mode=display">
 \beta_{i} = (a_{i1},a_{i2},a_{i3},···,a_{ic})
-,i = 1,2,···,r</script><script type="math/tex; mode=display">\beta_{i}$$表示图像灰度矩阵的行向量。
-
-得到目标区域灰度矩阵``T``：</script><p>T=\begin{bmatrix}<br>\beta<em>{i}·diag(\alpha</em>{1})\<br>\beta<em>{i}·diag(\alpha</em>{2})\<br>···<br>\<br>\beta<em>{i}·diag(\alpha</em>{i})\<br>···<br>\<br>\beta<em>{i}·diag(\alpha</em>{r})\<br>\end{bmatrix}</p>
-<p><script type="math/tex">其中</script>diag(\alpha<em>{})<script type="math/tex">是向量</script>\alpha</em>{i}$$构成的<code>c x c</code>的共生矩阵。</p>
+,i = 1,2,···,r</script><p> <script type="math/tex">\beta_{i}</script>表示图像灰度矩阵的行向量。</p>
+<p>得到目标区域灰度矩阵<code>T</code>：</p>
+<p><img src="https://i.loli.net/2019/10/27/76f1nUIZQ2VHw5x.png" alt="Snip20191027_10.png"></p>
+<p>其中<script type="math/tex">diag(\alpha_{})</script>是向量<script type="math/tex">\alpha_{i}</script>构成的<code>c x c</code>的共生矩阵。</p>
 <p>输出灰度图像：</p>
 <p><img src="https://i.loli.net/2019/10/27/LK6fV8rgdWabMQF.png" alt="Snip20191027_3.png"></p>
 <p>对灰度图像进行中值滤波并取二值化：</p>
